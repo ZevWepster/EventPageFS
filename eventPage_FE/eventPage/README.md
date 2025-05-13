@@ -1,7 +1,5 @@
 # Event Dashboard
 
-test message to remove subfolder
-
 ## Description
 
 Event Dashboard is a project that showcases my take on an assignment to build an event page where users can search for, add, edit, and delete events. The primary focus of this project is the "Add Event" modal, designed for an intuitive and efficient user experience.

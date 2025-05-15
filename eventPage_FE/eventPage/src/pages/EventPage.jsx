@@ -48,9 +48,9 @@ export const EventPage = () => {
     const fetchData = async () => {
       try {
         const [eventsRes, categoriesRes, usersRes] = await Promise.all([
-          fetch("http://localhost:3001/events"),
-          fetch("http://localhost:3001/categories"),
-          fetch("http://localhost:3001/users"),
+          fetch("http://localhost:3000/events"),
+          fetch("http://localhost:3000/categories"),
+          fetch("http://localhost:3000/users"),
         ]);
 
         if (!eventsRes.ok || !categoriesRes.ok || !usersRes.ok) {
@@ -84,12 +84,20 @@ export const EventPage = () => {
   }, [eventId]);
 
   const getCategoryNames = (categoryIds) => {
-    const categoryNames = categories
+    if (!Array.isArray(categoryIds) || !categories.length)
+      return "Uncategorized";
+    return categories
       .filter((category) => categoryIds.includes(parseInt(category.id)))
       .map((category) => category.name)
       .join(", ");
-    return categoryNames;
   };
+
+  //   const getCategoryNames = (categoryIds) => {
+  //   return (categories || [])
+  //     .filter((category) => categoryIds.includes(parseInt(category.id)))
+  //     .map((category) => category.name)
+  //     .join(", ");
+  // };
 
   const handleEdit = () => {
     setEditData({
@@ -115,7 +123,7 @@ export const EventPage = () => {
         ), // Zorg voor unieke integers
       };
 
-      const response = await fetch(`http://localhost:3001/events/${event.id}`, {
+      const response = await fetch(`http://localhost:3000/events/${event.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -150,7 +158,7 @@ export const EventPage = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/events/${event.id}`, {
+      const response = await fetch(`http://localhost:3000/events/${event.id}`, {
         method: "DELETE",
       });
       if (!response.ok) {

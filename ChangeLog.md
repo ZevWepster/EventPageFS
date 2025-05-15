@@ -1,5 +1,38 @@
 # Changelog
 
+## [1.0.4] - 15-05-2025
+
+### Installation
+
+- Updated setup instructions: The project now uses a fullstack backend (Node/Express/Prisma/SQLite) instead of JSON Server.
+- Start the backend with `npm run dev` in the `eventPage_BE/eventPage-backEnd` folder after running migrations and seeding.
+- Start the frontend with `npm run dev` in the `eventPage_FE/eventPage` folder.
+
+### Technologies
+
+- **Frontend**: Vite, React, Chakra UI.
+- **Backend**: Node.js, Express, Prisma ORM, SQLite.
+- **Removed**: JSON Server (now using real backend and database).
+
+---
+
+### Changed
+
+- Linked frontend and backend: The frontend now fetches all data from the backend API (no more static JSON or JSON Server).
+- Updated all fetch URLs in the frontend to point to the backend.
+- Enabled CORS in the backend for frontend communication.
+- Fixed Prisma seed script to ensure all IDs are strings.
+- Improved error handling in frontend for missing/undefined data.
+- Added robust category name resolution in event pages.
+
+### Debugged
+
+- Fixed errors related to undefined or missing `categoryIds` in event data.
+- Prevented crashes when categories or events are not yet loaded.
+- Ensured all date/time fields use ISO 8601 format.
+
+---
+
 ## [1.0.3] - 22-01-2025
 
 ### Added

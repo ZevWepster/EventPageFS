@@ -33,7 +33,7 @@ export const AddEventModal = ({ isOpen, onClose, onAddEvent }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch("http://localhost:3001/categories");
+        const response = await fetch("http://localhost:3000/categories");
         if (!response.ok) {
           throw new Error("Failed to fetch categories");
         }
@@ -74,7 +74,7 @@ export const AddEventModal = ({ isOpen, onClose, onAddEvent }) => {
         id: Date.now().toString(),
       };
 
-      const response = await fetch("http://localhost:3001/events", {
+      const response = await fetch("http://localhost:3000/events", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedFormData),

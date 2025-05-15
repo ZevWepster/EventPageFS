@@ -1,6 +1,7 @@
 import express from "express";
 import * as Sentry from "@sentry/node";
 import "dotenv/config";
+import cors from "cors";
 
 import usersRouter from "./routes/users.js";
 import eventsRouter from "./routes/events.js";
@@ -10,6 +11,7 @@ import log from "./middleware/logMiddleware.js";
 import errorHandler from "./middleware/errorHandler.js";
 
 const app = express();
+app.use(cors({ origin: "http://localhost:5173" }));
 
 // Sentry
 Sentry.init({

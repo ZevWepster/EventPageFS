@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { Navigation } from "./Navigation";
 import { Box } from "@chakra-ui/react";
-import data from "../events.json";
 
 export const Root = () => {
   const [events, setEvents] = useState([]);
@@ -10,13 +9,20 @@ export const Root = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    try {
-      setCategories(data.categories);
-      setEvents(data.events);
-      setFilteredEvents(data.events);
-    } catch (error) {
-      console.error("Error loading events from JSON:", error);
-    }
+    // Fetch categories
+    fetch("http://localhost:3000/categories")
+      .then((res) => res.json())
+      .then((data) => setCategories(data))
+      .catch((err) => console.error("Error fetching categories:", err));
+
+    // Fetch events
+    fetch("http://localhost:3000/events")
+      .then((res) => res.json())
+      .then((data) => {
+        setEvents(data);
+        setFilteredEvents(data);
+      })
+      .catch((err) => console.error("Error fetching events:", err));
   }, []);
 
   const handleSearch = (query) => {

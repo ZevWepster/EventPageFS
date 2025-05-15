@@ -11,7 +11,8 @@ Event Dashboard is a project that showcases my take on an assignment to build an
 - View event details by clicking on an event.
 - Edit or delete existing events from the event overview.
 - Add new events via the "Add Event" modal.
-- Real-time updates powered by a JSON server.
+- Real-time updates powered by a fullstack backend (Node/Express/Prisma/SQLite).
+- Frontend and backend are now fully linked—no more JSON server!
 
 ---
 
@@ -20,21 +21,26 @@ Event Dashboard is a project that showcases my take on an assignment to build an
 To get started, follow these steps:
 
 1. Open two terminals.
-2. In **Terminal 1**, navigate to the main project folder:
+
+2. In **Terminal 1**, navigate to the backend folder and start the backend server:
 
    ```bash
-   cd /eventPage
+   cd eventPage_BE/eventPage-backEnd
+   npm install
+   npx prisma migrate deploy
+   npm run seed
    npm run dev
    ```
 
-3. In **Terminal 2**, navigate to the `src` folder:
+3. In **Terminal 2**, navigate to the frontend folder and start the frontend server:
 
    ```bash
-   cd /eventPage/src
-   json-server --watch events.json --port 3001
+   cd eventPage_FE/eventPage
+   npm install
+   npm run dev
    ```
 
-4. Once both commands are running, open the localhost link provided by **Terminal 1** in your browser.
+4. Once both servers are running, open the localhost link provided by **Terminal 2** (usually http://localhost:5173) in your browser.
 
 ---
 
@@ -73,7 +79,8 @@ This project is licensed under the [MIT License](LICENSE.md).
 This project is built using:
 
 - **Vite**: A fast build tool for modern web projects.
-- **JavaScript**: The core language for functionality.
-- **JSON Server**: A simple backend to simulate an API.
-
----
+- **React**: For building the frontend UI.
+- **Node.js & Express**: For the backend API.
+- **Prisma**: For database ORM and migrations.
+- **SQLite**: As the database.
+- **Chakra UI**: For UI components.

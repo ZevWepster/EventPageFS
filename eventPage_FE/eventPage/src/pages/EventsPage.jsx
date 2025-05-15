@@ -18,10 +18,9 @@ export const EventsPage = () => {
   };
 
   const getCategoryNames = (categoryIds) => {
+    if (!Array.isArray(categoryIds) || !categories.length)
+      return "Uncategorized";
     const categoryIdsStr = categoryIds.map((id) => String(id));
-
-    if (!categories.length) return "Uncategorized";
-
     return categoryIdsStr
       .map((id) => {
         const category = categories.find((category) => category.id === id);

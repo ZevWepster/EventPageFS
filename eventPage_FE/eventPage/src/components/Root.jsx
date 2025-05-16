@@ -42,8 +42,10 @@ export const Root = () => {
     if (!selectedCategoryId) {
       setFilteredEvents(events);
     } else {
-      const filtered = events.filter((event) =>
-        event.categoryIds.includes(Number(selectedCategoryId))
+      const filtered = events.filter(
+        (event) =>
+          event.categories &&
+          event.categories.some((cat) => cat.id === selectedCategoryId)
       );
       setFilteredEvents(filtered);
     }

@@ -3,7 +3,7 @@ import { Box, Heading, Grid, GridItem, Image, Text } from "@chakra-ui/react";
 import { Link, useOutletContext } from "react-router-dom";
 
 export const EventsPage = () => {
-  const { filteredEvents, categories = [] } = useOutletContext();
+  const { filteredEvents = [] } = useOutletContext();
 
   const formatDateTime = (dateTime) => {
     const options = {
@@ -17,18 +17,18 @@ export const EventsPage = () => {
     return new Date(dateTime).toLocaleString(undefined, options);
   };
 
-  const getCategoryNames = (categoryIds) => {
-    if (!Array.isArray(categoryIds) || !categories.length)
-      return "Uncategorized";
-    const categoryIdsStr = categoryIds.map((id) => String(id));
-    return categoryIdsStr
-      .map((id) => {
-        const category = categories.find((category) => category.id === id);
-        return category ? category.name : null;
-      })
-      .filter((name) => name !== null)
-      .join(", ");
-  };
+  // const getCategoryNames = (categoryIds) => {
+  //   if (!Array.isArray(categoryIds) || !categories.length)
+  //     return "Uncategorized";
+  //   const categoryIdsStr = categoryIds.map((id) => String(id));
+  //   return categoryIdsStr
+  //     .map((id) => {
+  //       const category = categories.find((category) => category.id === id);
+  //       return category ? category.name : null;
+  //     })
+  //     .filter((name) => name !== null)
+  //     .join(", ");
+  // };
 
   return (
     <Box padding={5}>
@@ -82,7 +82,9 @@ export const EventsPage = () => {
                 </Text>
                 <Text fontSize={{ base: "sm", md: "md" }}>
                   <strong>Categories:</strong>{" "}
-                  {getCategoryNames(event.categoryIds)}
+                  {event.categories && event.categories.length
+                    ? event.categories.map((cat) => cat.name).join(", ")
+                    : "Uncategorized"}
                 </Text>
               </Link>
             </GridItem>

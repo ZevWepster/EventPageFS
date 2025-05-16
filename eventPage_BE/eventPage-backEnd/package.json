@@ -16,7 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^6.8.0",
+    "@prisma/client": "^6.8.1",
     "@sentry/node": "^7.120.3",
     "@sentry/profiling-node": "^9.1.0",
     "@sentry/vite-plugin": "^3.2.1",
@@ -30,7 +30,7 @@
   "devDependencies": {
     "newman": "^6.2.0",
     "nodemon": "^3.0.1",
-    "prisma": "^6.8.0"
+    "prisma": "^6.8.1"
   },
   "engines": {
     "node": ">=18 <19"

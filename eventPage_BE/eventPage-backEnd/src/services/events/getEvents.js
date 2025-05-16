@@ -11,6 +11,7 @@ const getEvents = async (title, location) => {
         contains: location,
       },
     },
+    include: { categories: true },
   });
 
   return events;

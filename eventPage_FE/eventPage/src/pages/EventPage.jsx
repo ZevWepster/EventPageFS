@@ -83,24 +83,6 @@ export const EventPage = () => {
     fetchData();
   }, [eventId]);
 
-  // const getCategoryNames = (categoryIds) => {
-  //   if (!Array.isArray(categoryIds) || !categories.length)
-  //     return "Uncategorized";
-  //   // Convert all categoryIds to strings for comparison
-  //   const categoryIdsStr = categoryIds.map(String);
-  //   return categories
-  //     .filter((category) => categoryIdsStr.includes(category.id))
-  //     .map((category) => category.name)
-  //     .join(", ");
-  // };
-
-  //   const getCategoryNames = (categoryIds) => {
-  //   return (categories || [])
-  //     .filter((category) => categoryIds.includes(parseInt(category.id)))
-  //     .map((category) => category.name)
-  //     .join(", ");
-  // };
-
   const handleEdit = () => {
     setEditData({
       ...event,
@@ -186,9 +168,6 @@ export const EventPage = () => {
   };
 
   const creator = users.find((user) => user.id === String(event?.createdBy));
-
-  // console.log("event.categoryIds", event.categoryIds);
-  // console.log("categories", categories);
 
   if (loading) {
     return <Spinner size="xl" />;

@@ -5,7 +5,6 @@ const updateEventById = async (id, updatedEvent) => {
 
   const { categoryIds, createdBy, ...rest } = updatedEvent;
 
-  // Here we can't use updateMany() because we need to update the createdBy and categories fields if it is passed
   const event = await prisma.event.update({
     where: { id },
     data: {

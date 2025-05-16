@@ -11,7 +11,6 @@ const getEventById = async (id) => {
 
   return {
     ...event,
-    // categoryIds: event.categories.map((cat) => cat.id),
   };
 };
 

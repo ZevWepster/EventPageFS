@@ -39,10 +39,10 @@ async function main() {
         location: event.location,
         image: event.image,
         categories: {
-          connect: event.categoryIds.map((id) => ({ id: String(id) })), // Ensure string
+          connect: event.categoryIds.map((id) => ({ id: String(id) })),
         },
         createdBy: {
-          connect: { id: String(event.createdBy) }, // Ensure string
+          connect: { id: String(event.createdBy) },
         },
       },
     });

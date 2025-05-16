@@ -17,19 +17,6 @@ export const EventsPage = () => {
     return new Date(dateTime).toLocaleString(undefined, options);
   };
 
-  // const getCategoryNames = (categoryIds) => {
-  //   if (!Array.isArray(categoryIds) || !categories.length)
-  //     return "Uncategorized";
-  //   const categoryIdsStr = categoryIds.map((id) => String(id));
-  //   return categoryIdsStr
-  //     .map((id) => {
-  //       const category = categories.find((category) => category.id === id);
-  //       return category ? category.name : null;
-  //     })
-  //     .filter((name) => name !== null)
-  //     .join(", ");
-  // };
-
   return (
     <Box padding={5}>
       <Heading mb={5} textAlign="center">

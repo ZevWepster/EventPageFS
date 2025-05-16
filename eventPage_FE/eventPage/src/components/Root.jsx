@@ -9,13 +9,11 @@ export const Root = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    // Fetch categories
     fetch("http://localhost:3000/categories")
       .then((res) => res.json())
       .then((data) => setCategories(data))
       .catch((err) => console.error("Error fetching categories:", err));
 
-    // Fetch events
     fetch("http://localhost:3000/events")
       .then((res) => res.json())
       .then((data) => {

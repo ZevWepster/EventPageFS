@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Heading, Grid, GridItem, Image, Text } from "@chakra-ui/react";
 import { Link, useOutletContext } from "react-router-dom";
+import { LoginModal } from "../components/Login";
 
 export const EventsPage = () => {
   const { filteredEvents = [] } = useOutletContext();
@@ -22,6 +23,7 @@ export const EventsPage = () => {
       <Heading mb={5} textAlign="center">
         Event Dashboard
       </Heading>
+      <LoginModal />
       <Grid
         templateColumns={{
           base: "1fr",

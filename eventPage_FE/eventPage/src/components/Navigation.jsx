@@ -12,6 +12,7 @@ import {
   ButtonGroup,
 } from "@chakra-ui/react";
 import { AddEventModal } from "./AddEvent";
+import { LoginModal } from "./Login"; // <-- Import your LoginModal
 import { useNavigate } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 
@@ -22,7 +23,16 @@ export const Navigation = ({
   categories,
   events,
 }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isAddOpen,
+    onOpen: onAddOpen,
+    onClose: onAddClose,
+  } = useDisclosure();
+  const {
+    isOpen: isLoginOpen,
+    onOpen: onLoginOpen,
+    onClose: onLoginClose,
+  } = useDisclosure();
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -80,7 +90,7 @@ export const Navigation = ({
         alignItems="center"
         flexWrap="wrap"
       >
-        <ButtonGroup gap="4">
+        <ButtonGroup gap="4" flexWrap="wrap">
           <Heading
             as="button"
             size="md"
@@ -94,13 +104,27 @@ export const Navigation = ({
             aria-label="Go to Event Dashboard"
             onClick={handleHomeButtonClick}
             display="flex"
+            flexWrap={"wrap"}
             alignItems="center"
           >
             <FaHome style={{ marginRight: "8px" }} />
             Event Dashboard
           </Heading>
 
-          <Button colorScheme="green" onClick={onOpen} w="25%">
+          <Button
+            colorScheme="red"
+            onClick={onLoginOpen}
+            w="30%"
+            marginBottom={1}
+          >
+            Sign In/ Sign Up
+          </Button>
+          <Button
+            colorScheme="green"
+            onClick={onAddOpen}
+            w="30%"
+            marginBottom={1}
+          >
             Add Event
           </Button>
         </ButtonGroup>
@@ -164,10 +188,11 @@ export const Navigation = ({
       </Flex>
 
       <AddEventModal
-        isOpen={isOpen}
-        onClose={onClose}
+        isOpen={isAddOpen}
+        onClose={onAddClose}
         onAddEvent={onAddEvent}
       />
+      <LoginModal isOpen={isLoginOpen} onClose={onLoginClose} />
     </>
   );
 };

@@ -10,7 +10,7 @@ Event Dashboard is a project that showcases my take on an assignment to build an
 
 - View event details by clicking on an event.
 - Edit or delete existing events from the event overview.
-- Add new events via the "Add Event" modal.
+- Add new events via the "Add Event" modal. Currently implementing Autherization.
 - Real-time updates powered by a fullstack backend (Node/Express/Prisma/SQLite).
 - Frontend and backend are now fully linked—no more JSON server!
 
